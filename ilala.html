@@ -2,12 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Ilala Academies | EliteScout.tz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    /* ========== SAME FLAGSHIP CSS (copy from kinondoni.html) ========== */
     * {
       margin: 0;
       padding: 0;
@@ -19,10 +20,18 @@
       color: #edf2ff;
       overflow-x: hidden;
     }
-    ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: #1a1f2e; }
-    ::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 10px; }
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #1a1f2e;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #3b82f6;
+      border-radius: 10px;
+    }
 
+    /* Glass Navigation */
     .glass-nav {
       background: rgba(15, 23, 42, 0.8);
       backdrop-filter: blur(12px);
@@ -80,10 +89,12 @@
       background: #3b82f6;
       transition: 0.3s;
     }
-    .nav-links a:hover::after, .nav-links a.active::after {
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
       width: 100%;
     }
-    .nav-links a:hover, .nav-links a.active {
+    .nav-links a:hover,
+    .nav-links a.active {
       color: white;
     }
     .mobile-menu {
@@ -93,22 +104,38 @@
       cursor: pointer;
     }
 
+    /* Hero Section (District Header) */
     .hero-section {
-      position: relative;
       background: radial-gradient(circle at 20% 30%, #0a0f1e, #030617);
       padding: 4rem 2rem;
       text-align: center;
+      position: relative;
     }
+    .hero-section h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, #fff, #3b82f6);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      display: inline-block;
+    }
+    .hero-section p {
+      color: #94a3b8;
+      font-size: 1.1rem;
+    }
+
+    /* Container & Cards */
     .container {
       max-width: 1280px;
       margin: 0 auto;
       padding: 0 1rem;
     }
-    .search-results-grid {
+    .academies-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 1.8rem;
-      margin-top: 2rem;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
     }
     .academy-card {
       background: rgba(15, 25, 45, 0.7);
@@ -116,18 +143,18 @@
       border-radius: 1.5rem;
       overflow: hidden;
       border: 1px solid rgba(59,130,246,0.3);
-      transition: all 0.3s;
+      transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
     }
     .academy-card:hover {
       transform: translateY(-6px);
       border-color: #3b82f6;
-      box-shadow: 0 20px 30px -10px rgba(0,0,0,0.4);
+      box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.4);
     }
     .card-content {
       padding: 1.5rem;
     }
     .academy-card h3 {
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       margin-bottom: 0.5rem;
     }
     .location {
@@ -159,12 +186,14 @@
       background: #3b82f6;
       gap: 12px;
     }
+
+    /* Footer */
     footer {
       background: #050a15;
       text-align: center;
       padding: 2rem;
       border-top: 1px solid #1e293b;
-      margin-top: 3rem;
+      margin-top: 2rem;
     }
     .social-icons i {
       font-size: 1.5rem;
@@ -177,18 +206,20 @@
       color: #3b82f6;
       transform: translateY(-3px);
     }
+
+    /* Responsive */
     @media (max-width: 768px) {
       .nav-links {
         display: none;
         flex-direction: column;
         background: #0f172ae6;
+        backdrop-filter: blur(20px);
         position: absolute;
         top: 70px;
         left: 0;
         width: 100%;
         padding: 1.5rem;
         gap: 1.2rem;
-        backdrop-filter: blur(20px);
       }
       .nav-links.show {
         display: flex;
@@ -196,15 +227,21 @@
       .mobile-menu {
         display: block;
       }
+      .hero-section h1 {
+        font-size: 1.8rem;
+      }
     }
   </style>
 </head>
 <body>
   <nav class="glass-nav">
     <div class="nav-container">
-      <div class="logo"><i class="fas fa-futbol"></i><span>EliteScout<span style="font-weight:400; color:#94a3b8;">.tz</span></span></div>
+      <div class="logo">
+        <i class="fas fa-futbol"></i>
+        <span>EliteScout<span style="font-weight:400; color:#94a3b8;">.tz</span></span>
+      </div>
       <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
         <li><a href="temeke.html">Temeke</a></li>
         <li><a href="kinondoni.html">Kinondoni</a></li>
         <li><a href="ilala.html" class="active">Ilala</a></li>
@@ -214,23 +251,33 @@
       <div class="mobile-menu"><i class="fas fa-bars"></i></div>
     </div>
   </nav>
+
   <div class="hero-section">
     <h1><i class="fas fa-map-marker-alt"></i> Ilala Academies</h1>
     <p>Discover elite football development in Ilala</p>
   </div>
+
   <div class="container">
-    <div id="districtAcademiesList" class="search-results-grid"></div>
+    <div id="districtAcademiesList" class="academies-grid"></div>
   </div>
+
   <footer>
     <p><i class="fas fa-copyright"></i> 2025 EliteScout.tz — The Future of Football Development</p>
-    <div class="social-icons"><i class="fab fa-instagram"></i><i class="fab fa-whatsapp"></i><i class="fab fa-twitter"></i></div>
+    <div class="social-icons">
+      <i class="fab fa-instagram"></i>
+      <i class="fab fa-whatsapp"></i>
+      <i class="fab fa-twitter"></i>
+    </div>
   </footer>
+
   <script src="script.js"></script>
   <script>
     document.querySelector('.mobile-menu')?.addEventListener('click', () => {
       document.querySelector('.nav-links').classList.toggle('show');
     });
-    if (typeof window.renderDistrictPage === 'function') window.renderDistrictPage('Ilala');
+    if (typeof window.renderDistrictPage === 'function') {
+      window.renderDistrictPage('Ilala');
+    }
   </script>
 </body>
 </html>
