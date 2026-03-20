@@ -3,31 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Elite Football Academies | Home</title>
+  <title>EliteScout • The Future of Football</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
     }
     body {
-      background: #f0f2f5;
-      color: #1e2a3a;
+      font-family: 'Inter', sans-serif;
+      background: #0b0e1a;
+      color: #edf2ff;
+      overflow-x: hidden;
     }
-    /* Glass navigation */
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #1a1f2e; }
+    ::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 10px; }
+
+    /* Glass Navigation */
     .glass-nav {
-      background: rgba(10, 25, 47, 0.95);
+      background: rgba(15, 23, 42, 0.8);
       backdrop-filter: blur(12px);
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 1000;
       padding: 1rem 2rem;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
+      border-bottom: 1px solid rgba(59,130,246,0.3);
+      transition: all 0.3s;
     }
     .nav-container {
       max-width: 1280px;
@@ -39,88 +46,135 @@
     .logo {
       display: flex;
       align-items: center;
-      gap: 10px;
-      font-size: 1.5rem;
+      gap: 12px;
+      font-size: 1.7rem;
       font-weight: 800;
-      color: white;
+      background: linear-gradient(135deg, #fff, #3b82f6);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
-    .logo i { color: #3b82f6; }
-    .logo-light { font-weight: 400; color: #94a3b8; }
+    .logo i {
+      background: none;
+      color: #3b82f6;
+      font-size: 1.8rem;
+    }
     .nav-links {
       display: flex;
-      gap: 1.5rem;
+      gap: 2rem;
       list-style: none;
     }
     .nav-links a {
-      color: #e2e8f0;
+      color: #cbd5e6;
       text-decoration: none;
       font-weight: 500;
       transition: 0.2s;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: #3b82f6;
+      transition: 0.3s;
+    }
+    .nav-links a:hover::after, .nav-links a.active::after {
+      width: 100%;
     }
     .nav-links a:hover, .nav-links a.active {
-      color: #3b82f6;
+      color: white;
     }
     .mobile-menu {
       display: none;
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       color: white;
       cursor: pointer;
     }
-    /* Hero */
+
+    /* Hero Section with Animated Gradient */
     .hero-section {
       position: relative;
-      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-      color: white;
-      padding: 4rem 2rem;
+      background: radial-gradient(circle at 20% 30%, #0a0f1e, #030617);
+      padding: 6rem 2rem;
       text-align: center;
       overflow: hidden;
     }
     .hero-bg {
       position: absolute;
       inset: 0;
-      background: url('https://images.unsplash.com/photo-1517466787929-bc90951d0974?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') center/cover;
-      opacity: 0.15;
+      background: url('https://images.unsplash.com/photo-1522778119026-d647f0596c20?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') center/cover;
+      opacity: 0.1;
+      animation: slowZoom 20s infinite alternate;
+    }
+    @keyframes slowZoom {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.05); }
     }
     .hero-content {
       position: relative;
-      max-width: 800px;
+      max-width: 900px;
       margin: 0 auto;
     }
     .gradient-text {
-      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      background: linear-gradient(135deg, #3b82f6, #a855f7, #ec489a);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
+      animation: shimmer 3s infinite;
+    }
+    @keyframes shimmer {
+      0% { background-position: -200% center; }
+      100% { background-position: 200% center; }
     }
     .hero-stats {
       display: flex;
       justify-content: center;
-      gap: 2rem;
-      margin-top: 2rem;
-      font-weight: 500;
+      gap: 3rem;
+      margin-top: 2.5rem;
+      font-weight: 600;
     }
-    .hero-stats i { margin-right: 8px; color: #3b82f6; }
+    .hero-stats div {
+      background: rgba(59,130,246,0.2);
+      backdrop-filter: blur(5px);
+      padding: 0.6rem 1.2rem;
+      border-radius: 40px;
+      border: 1px solid rgba(59,130,246,0.4);
+    }
+
     /* Search Section */
     .search-section {
-      background: white;
-      padding: 2rem;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(12px);
       border-radius: 2rem;
-      margin: -2rem 1rem 2rem 1rem;
-      box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+      margin: -3rem 1rem 2rem 1rem;
+      padding: 1.5rem;
+      border: 1px solid rgba(59,130,246,0.3);
+      box-shadow: 0 20px 35px -10px rgba(0,0,0,0.3);
     }
-    .container { max-width: 1280px; margin: 0 auto; }
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
     .search-card {
       display: flex;
       align-items: center;
-      background: #f8fafc;
+      background: rgba(0,0,0,0.4);
       border-radius: 60px;
       padding: 0.5rem 1.5rem;
-      border: 1px solid #e2e8f0;
+      border: 1px solid #2d3748;
     }
-    .search-icon { color: #94a3b8; font-size: 1.2rem; margin-right: 12px; }
+    .search-icon {
+      color: #3b82f6;
+      font-size: 1.3rem;
+      margin-right: 12px;
+    }
     #globalSearchInput {
       flex: 1;
       border: none;
@@ -128,65 +182,200 @@
       padding: 1rem 0;
       font-size: 1rem;
       outline: none;
+      color: white;
+    }
+    #globalSearchInput::placeholder {
+      color: #94a3b8;
     }
     .search-results-grid {
       margin-top: 2rem;
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.8rem;
     }
-    /* District cards */
-    .districts-showcase { padding: 2rem 1rem 4rem; }
+
+    /* District Cards */
+    .districts-showcase {
+      padding: 4rem 1rem;
+    }
     .section-header {
       text-align: center;
-      margin-bottom: 2.5rem;
+      margin-bottom: 3rem;
     }
-    .section-header h2 { font-size: 2rem; margin-bottom: 0.5rem; }
+    .section-header h2 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, #fff, #3b82f6);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      display: inline-block;
+    }
     .districts-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 2rem;
     }
     .district-card {
-      background: white;
-      border-radius: 1.5rem;
-      padding: 1.5rem;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-      transition: all 0.3s;
+      background: rgba(15, 25, 45, 0.7);
+      backdrop-filter: blur(8px);
+      border-radius: 1.8rem;
+      padding: 1.8rem;
       text-decoration: none;
       color: inherit;
-      display: block;
-      border: 1px solid #eef2ff;
+      border: 1px solid rgba(59,130,246,0.3);
+      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      position: relative;
+      overflow: hidden;
+    }
+    .district-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(59,130,246,0.2), transparent);
+      transition: 0.6s;
+    }
+    .district-card:hover::before {
+      left: 100%;
     }
     .district-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 30px -12px rgba(0,0,0,0.15);
+      transform: translateY(-8px) scale(1.02);
       border-color: #3b82f6;
+      box-shadow: 0 25px 35px -12px rgba(0,0,0,0.5);
     }
-    .district-card h3 { font-size: 1.5rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 8px; }
-    .district-card p { color: #475569; margin-bottom: 1rem; }
-    .badge { background: #eef2ff; color: #1e40af; padding: 0.25rem 0.75rem; border-radius: 30px; font-size: 0.8rem; font-weight: 600; display: inline-block; }
+    .district-card h3 {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .district-card p {
+      color: #9ca3af;
+      margin-bottom: 1rem;
+    }
+    .badge {
+      background: #3b82f6;
+      padding: 0.3rem 1rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      display: inline-block;
+      transition: 0.2s;
+    }
+    .district-card:hover .badge {
+      background: #2563eb;
+      box-shadow: 0 0 8px #3b82f6;
+    }
+
+    /* Academy Card (for search results and district pages) */
+    .academy-card {
+      background: rgba(15, 25, 45, 0.7);
+      backdrop-filter: blur(8px);
+      border-radius: 1.5rem;
+      overflow: hidden;
+      border: 1px solid rgba(59,130,246,0.3);
+      transition: all 0.3s;
+    }
+    .academy-card:hover {
+      transform: translateY(-6px);
+      border-color: #3b82f6;
+      box-shadow: 0 20px 30px -10px rgba(0,0,0,0.4);
+    }
+    .card-content {
+      padding: 1.5rem;
+    }
+    .academy-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+    }
+    .location {
+      color: #3b82f6;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.9rem;
+    }
+    .preview {
+      color: #b9c7d9;
+      margin-bottom: 1.2rem;
+      line-height: 1.4;
+    }
+    .btn-details {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #1e293b;
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.2s;
+    }
+    .btn-details:hover {
+      background: #3b82f6;
+      gap: 12px;
+    }
+
+    /* Footer */
     footer {
-      background: #0f172a;
-      color: #cbd5e1;
+      background: #050a15;
       text-align: center;
       padding: 2rem;
-      margin-top: 2rem;
+      border-top: 1px solid #1e293b;
+      margin-top: 3rem;
     }
-    .social-icons i { font-size: 1.5rem; margin: 0 10px; cursor: pointer; transition: 0.2s; }
-    .social-icons i:hover { color: #3b82f6; }
+    .social-icons i {
+      font-size: 1.5rem;
+      margin: 0 12px;
+      cursor: pointer;
+      transition: 0.2s;
+      color: #64748b;
+    }
+    .social-icons i:hover {
+      color: #3b82f6;
+      transform: translateY(-3px);
+    }
+
+    /* Responsive */
     @media (max-width: 768px) {
-      .nav-links { display: none; flex-direction: column; background: #0f172a; position: absolute; top: 70px; left: 0; width: 100%; padding: 1rem; gap: 1rem; }
-      .nav-links.show { display: flex; }
-      .mobile-menu { display: block; }
-      .hero-stats { flex-direction: column; gap: 0.5rem; }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background: #0f172ae6;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        padding: 1.5rem;
+        gap: 1.2rem;
+        backdrop-filter: blur(20px);
+      }
+      .nav-links.show {
+        display: flex;
+      }
+      .mobile-menu {
+        display: block;
+      }
+      .hero-stats {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .hero-section {
+        padding: 4rem 1rem;
+      }
     }
   </style>
 </head>
 <body>
   <nav class="glass-nav">
     <div class="nav-container">
-      <div class="logo"><i class="fas fa-futbol"></i><span>EliteScout<span class="logo-light">.tz</span></span></div>
+      <div class="logo"><i class="fas fa-futbol"></i><span>EliteScout<span style="font-weight:400; color:#94a3b8;">.tz</span></span></div>
       <ul class="nav-links">
         <li><a href="index.html" class="active"><i class="fas fa-home"></i> Home</a></li>
         <li><a href="temeke.html"><i class="fas fa-map-marker-alt"></i> Temeke</a></li>
@@ -202,32 +391,47 @@
     <section class="hero-section">
       <div class="hero-bg"></div>
       <div class="hero-content">
-        <h1>Discover <span class="gradient-text">Top Football Academies</span></h1>
-        <p>Elite development programs across Dar es Salaam — train with the best coaches, elevate your game.</p>
-        <div class="hero-stats"><div><i class="fas fa-school"></i> 15+ Academies</div><div><i class="fas fa-users"></i> 200+ Young Talents</div><div><i class="fas fa-trophy"></i> Elite Pathway</div></div>
+        <h1>Unlock <span class="gradient-text">Elite Football</span><br>Pathways</h1>
+        <p>Discover the top academies in Dar es Salaam. Train with world-class coaches, join the next generation of stars.</p>
+        <div class="hero-stats">
+          <div><i class="fas fa-school"></i> 15+ Academies</div>
+          <div><i class="fas fa-users"></i> 200+ Talents</div>
+          <div><i class="fas fa-chart-line"></i> 90% Success Rate</div>
+        </div>
       </div>
     </section>
     <div class="container">
       <div class="search-section">
-        <div class="search-card"><i class="fas fa-search search-icon"></i><input type="text" id="globalSearchInput" placeholder="Search any academy by name, district or coach..."></div>
+        <div class="search-card">
+          <i class="fas fa-search search-icon"></i>
+          <input type="text" id="globalSearchInput" placeholder="Search by academy name, district, or coach...">
+        </div>
         <div id="globalSearchResults" class="search-results-grid"></div>
       </div>
     </div>
     <section class="districts-showcase">
       <div class="container">
-        <div class="section-header"><h2>Football Districts <i class="fas fa-map-marked-alt"></i></h2><p>Choose your district & find your future academy</p></div>
+        <div class="section-header">
+          <h2><i class="fas fa-map-marked-alt"></i> Choose Your District</h2>
+          <p>Where future legends are forged</p>
+        </div>
         <div class="districts-grid" id="districtsGrid"></div>
       </div>
     </section>
   </main>
-  <footer><div class="footer-content"><p><i class="fas fa-copyright"></i> 2025 Elite Football Academies — Developing Future Stars</p><div class="social-icons"><i class="fab fa-instagram"></i><i class="fab fa-whatsapp"></i><i class="fab fa-twitter"></i></div></div></footer>
+  <footer>
+    <p><i class="fas fa-copyright"></i> 2025 EliteScout.tz — The Future of Football Development</p>
+    <div class="social-icons">
+      <i class="fab fa-instagram"></i>
+      <i class="fab fa-whatsapp"></i>
+      <i class="fab fa-twitter"></i>
+    </div>
+  </footer>
   <script src="script.js"></script>
   <script>
-    // mobile toggle
     document.querySelector('.mobile-menu')?.addEventListener('click', () => {
       document.querySelector('.nav-links').classList.toggle('show');
     });
-    // populate districts on index
     if (typeof window.renderDistricts === 'function') window.renderDistricts();
     if (typeof window.initGlobalSearch === 'function') window.initGlobalSearch();
   </script>
