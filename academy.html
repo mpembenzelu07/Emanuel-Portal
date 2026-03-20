@@ -3,48 +3,182 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Academy Details | Elite Football</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;600;700;800&display=swap" rel="stylesheet">
+  <title>Academy Profile | EliteScout.tz</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
-    body{background:#f0f2f5;color:#1e2a3a;}
-    .glass-nav{background:rgba(10,25,47,0.95);backdrop-filter:blur(12px);position:sticky;top:0;z-index:100;padding:1rem 2rem;border-bottom:1px solid rgba(255,255,255,0.1);}
-    .nav-container{max-width:1280px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;}
-    .logo{display:flex;align-items:center;gap:10px;font-size:1.5rem;font-weight:800;color:white;}
-    .logo i{color:#3b82f6;}
-    .logo-light{font-weight:400;color:#94a3b8;}
-    .nav-links{display:flex;gap:1.5rem;list-style:none;}
-    .nav-links a{color:#e2e8f0;text-decoration:none;font-weight:500;transition:0.2s;display:flex;align-items:center;gap:6px;}
-    .nav-links a:hover{color:#3b82f6;}
-    .mobile-menu{display:none;font-size:1.5rem;color:white;cursor:pointer;}
-    .academy-detail-container{max-width:1000px;margin:2rem auto;padding:0 1rem;}
-    .detail-card{background:white;border-radius:2rem;overflow:hidden;box-shadow:0 20px 35px -10px rgba(0,0,0,0.1);padding:2rem;}
-    .academy-name{font-size:2rem;margin-bottom:0.5rem;}
-    .info-row{display:flex;align-items:center;gap:1rem;margin:1rem 0;flex-wrap:wrap;}
-    .info-row i{width:28px;color:#3b82f6;}
-    .whatsapp-btn{background:#25D366;color:white;padding:0.6rem 1.2rem;border-radius:40px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;font-weight:600;margin-top:0.5rem;}
-    .players-section{margin-top:2rem;}
-    .filter-bar{display:flex;gap:1rem;margin:1rem 0;flex-wrap:wrap;}
-    .filter-btn{background:#eef2ff;border:none;padding:0.5rem 1rem;border-radius:30px;cursor:pointer;font-weight:500;transition:0.2s;}
-    .filter-btn.active{background:#3b82f6;color:white;}
-    .players-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1rem;margin-top:1rem;}
-    .player-card{background:#f8fafc;border-radius:1rem;padding:1rem;border-left:4px solid #3b82f6;}
-    .player-name{font-weight:700;font-size:1.1rem;}
-    .player-age{color:#475569;font-size:0.9rem;}
-    .player-pos{display:inline-block;background:#e2e8f0;padding:0.2rem 0.6rem;border-radius:30px;font-size:0.75rem;margin-top:0.5rem;}
-    footer{background:#0f172a;color:#cbd5e1;text-align:center;padding:2rem;margin-top:2rem;}
-    @media (max-width:768px){ .nav-links{ display:none; flex-direction:column; background:#0f172a; position:absolute; top:70px; left:0; width:100%; padding:1rem; gap:1rem; } .nav-links.show{ display:flex; } .mobile-menu{ display:block; } }
+    /* Same base styles as index.html, plus additional for details page */
+    /* Add these extras: */
+    .academy-detail-container {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    .detail-card {
+      background: rgba(15, 25, 45, 0.8);
+      backdrop-filter: blur(12px);
+      border-radius: 2rem;
+      padding: 2rem;
+      border: 1px solid rgba(59,130,246,0.4);
+      box-shadow: 0 25px 35px -12px rgba(0,0,0,0.3);
+    }
+    .academy-name {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #fff, #3b82f6);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .info-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 1.2rem 0;
+      flex-wrap: wrap;
+      font-size: 1.1rem;
+    }
+    .info-row i {
+      width: 28px;
+      color: #3b82f6;
+      font-size: 1.2rem;
+    }
+    .whatsapp-btn {
+      background: #25D366;
+      color: white;
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      transition: 0.2s;
+      margin-left: 1rem;
+    }
+    .whatsapp-btn:hover {
+      background: #128C7E;
+      transform: scale(1.02);
+    }
+    .players-section {
+      margin-top: 2rem;
+    }
+    .filter-bar {
+      display: flex;
+      gap: 0.8rem;
+      margin: 1rem 0;
+      flex-wrap: wrap;
+    }
+    .filter-btn {
+      background: #1e293b;
+      border: none;
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: 0.2s;
+      color: white;
+    }
+    .filter-btn.active {
+      background: #3b82f6;
+      box-shadow: 0 0 8px #3b82f6;
+    }
+    .players-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.2rem;
+      margin-top: 1rem;
+    }
+    .player-card {
+      background: rgba(0,0,0,0.3);
+      border-radius: 1.2rem;
+      padding: 1rem;
+      border-left: 4px solid #3b82f6;
+      transition: 0.2s;
+    }
+    .player-card:hover {
+      transform: translateX(5px);
+      background: rgba(59,130,246,0.1);
+    }
+    .player-name {
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+    .player-age {
+      color: #94a3b8;
+      font-size: 0.9rem;
+    }
+    .player-pos {
+      display: inline-block;
+      background: #3b82f6;
+      padding: 0.2rem 0.7rem;
+      border-radius: 30px;
+      font-size: 0.75rem;
+      margin-top: 0.5rem;
+    }
+    /* Back to top button */
+    #backToTop {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #3b82f6;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      transition: 0.3s;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      z-index: 99;
+    }
+    #backToTop.show {
+      opacity: 1;
+    }
+    #backToTop i {
+      color: white;
+      font-size: 1.2rem;
+    }
   </style>
 </head>
 <body>
-  <nav class="glass-nav"><div class="nav-container"><div class="logo"><i class="fas fa-futbol"></i><span>EliteScout<span class="logo-light">.tz</span></span></div><ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="temeke.html">Temeke</a></li><li><a href="kinondoni.html">Kinondoni</a></li><li><a href="ilala.html">Ilala</a></li><li><a href="kigamboni.html">Kigamboni</a></li><li><a href="ubungo.html">Ubungo</a></li></ul><div class="mobile-menu"><i class="fas fa-bars"></i></div></div></nav>
+  <nav class="glass-nav">
+    <div class="nav-container">
+      <div class="logo"><i class="fas fa-futbol"></i><span>EliteScout<span style="font-weight:400; color:#94a3b8;">.tz</span></span></div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="temeke.html">Temeke</a></li>
+        <li><a href="kinondoni.html">Kinondoni</a></li>
+        <li><a href="ilala.html">Ilala</a></li>
+        <li><a href="kigamboni.html">Kigamboni</a></li>
+        <li><a href="ubungo.html">Ubungo</a></li>
+      </ul>
+      <div class="mobile-menu"><i class="fas fa-bars"></i></div>
+    </div>
+  </nav>
   <div id="academyDetailRoot" class="academy-detail-container"></div>
-  <footer><p><i class="fas fa-copyright"></i> 2025 Elite Football Academies</p><div class="social-icons"><i class="fab fa-instagram"></i><i class="fab fa-whatsapp"></i><i class="fab fa-twitter"></i></div></footer>
+  <div id="backToTop"><i class="fas fa-arrow-up"></i></div>
+  <footer>
+    <p><i class="fas fa-copyright"></i> 2025 EliteScout.tz — The Future of Football Development</p>
+    <div class="social-icons"><i class="fab fa-instagram"></i><i class="fab fa-whatsapp"></i><i class="fab fa-twitter"></i></div>
+  </footer>
   <script src="script.js"></script>
   <script>
-    document.querySelector('.mobile-menu')?.addEventListener('click',()=>document.querySelector('.nav-links').classList.toggle('show'));
-    if(typeof window.loadAcademyDetail === 'function') window.loadAcademyDetail();
+    document.querySelector('.mobile-menu')?.addEventListener('click', () => {
+      document.querySelector('.nav-links').classList.toggle('show');
+    });
+    if (typeof window.loadAcademyDetail === 'function') window.loadAcademyDetail();
+    // Back to top logic
+    window.addEventListener('scroll', () => {
+      const btn = document.getElementById('backToTop');
+      if (window.scrollY > 300) btn.classList.add('show');
+      else btn.classList.remove('show');
+    });
+    document.getElementById('backToTop')?.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
   </script>
 </body>
 </html>
